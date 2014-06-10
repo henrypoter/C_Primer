@@ -21,5 +21,5 @@ int main(void)
     printf("Instead, use a \"macro\" from inttypes.h: ");
     printf("me16 = %" PRId16"\n", me16);
 
-	return 0;
+    return 0;
 }
