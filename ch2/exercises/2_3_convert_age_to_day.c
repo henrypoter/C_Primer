@@ -1,19 +1,21 @@
 /*************************************************************************
-	> File Name: first.c
+	> File Name: 2_3_convert_age_to_day.c
 	> Author: Hui Wang
 	> Mail: ncepuwanghui@gmail.com 
-	> Created Time: Mon 09 Jun 2014 09:47:50 PM CST
+	> Created Time: Tue 10 Jun 2014 03:32:43 PM CST
  ************************************************************************/
+/*
+ * 功能：将年龄转换为天数
+ */
 
 #include <stdio.h>
 
 int main(void)
 {
-    int num;
-    num = 1;
+    unsigned char age = 24;
 
-    printf("I am a simple ");
-    printf("computer.\n");
-    printf("My favorite number is %d because it is first.\n", num);
-    return 0;
+    printf("Age: %d\n", age);
+    printf("Day: %d\n", age * 365);
+
+	return 0;
 }

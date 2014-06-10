@@ -1,5 +1,5 @@
 /*************************************************************************
-	> File Name: two_func.c
+	> File Name: 2_3_two_func.c
 	> Author: Hui Wang
 	> Mail: ncepuwanghui@gmail.com 
 	> Created Time: Tue 10 Jun 2014 02:57:17 PM CST

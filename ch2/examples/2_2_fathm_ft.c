@@ -1,5 +1,5 @@
 /*************************************************************************
-	> File Name: fathm_ft.c
+	> File Name: 2_2_fathm_ft.c
 	> Author: Hui Wang
 	> Mail: ncepuwanghui@gmail.com 
 	> Created Time: Tue 10 Jun 2014 02:54:06 PM CST
