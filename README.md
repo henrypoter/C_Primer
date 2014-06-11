@@ -3,4 +3,4 @@ C_Primer
 
 C Primer Plus, Fifth Edition
 
-u'Ñ§Ï°±Ê¼Ç'£º[C Primer Plus Note](c_primer_plus_note.md)
+[C Primer Plus Note](c_primer_plus_note.md)
