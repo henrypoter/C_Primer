@@ -3,4 +3,4 @@ C_Primer
 
 C Primer Plus, Fifth Edition
 
-学习笔记：[C Primer Plus Note](c_primer_plus_note.md)
+u'学习笔记'：[C Primer Plus Note](c_primer_plus_note.md)
