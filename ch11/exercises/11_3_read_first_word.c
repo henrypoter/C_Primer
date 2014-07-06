@@ -6,7 +6,7 @@
  ************************************************************************/
 
 #include <stdio.h>
-#include <string.h>
+#include <stdio_ext.h>
 #include <ctype.h>
 
 void read_first_word(char *);
@@ -17,14 +17,19 @@ int main(void)
     const unsigned int WORD_NUM = 128;
 
     char words[WORD_NUM][WORD_SIZE];
-    unsigned int i = 0;
-
-    for (i = 0; i < WORD_NUM && words[i][0] != '\0'; i++)
-    {
-        read_first_word(words[i]);
-    }
+    unsigned int i = 0, cnt = 0;
 
     for (i = 0; i < WORD_NUM; i++)
+    {
+        read_first_word(words[i]);
+        if (words[i][0] == '\0')
+        {
+            break;
+        }
+        cnt++;
+    }
+
+    for (i = 0; i < cnt; i++)
     {
         puts(words[i]);
     }
@@ -37,8 +42,12 @@ void read_first_word(char * word)
     char line[128] = {0};
     unsigned int i = 0, j = 0;
 
+    //flush input buffer before read
+    __fpurge(stdin);
+
     fgets(line, 128, stdin);
 
+    //find the first non-space char
     while (line[i] != '\0')
     {
         if (!isspace(line[i]))
@@ -66,9 +75,7 @@ void read_first_word(char * word)
             j++;
         }
     }
-
-    while (getchar() != '\n')
-    {
-        ;
-    }
+    
+    //flush input buffer to clear the rest characters
+    __fpurge(stdin);
 }

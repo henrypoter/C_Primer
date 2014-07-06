@@ -12,7 +12,7 @@ void read_char(char [], const unsigned int);
 int main(void)
 {
     const unsigned int MAX_SIZE = 128;
-    char str[MAX_SIZE] = {0};
+    char str[MAX_SIZE];
     unsigned int n = 0;
 
     puts("Input the length of the string: ");
