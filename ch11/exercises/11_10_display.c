@@ -16,7 +16,7 @@
 void get_string(char (*)[MAX_LEN], unsigned int *);
 void display(const char (*)[MAX_LEN], const unsigned int);
 void display_by_ascii(const char (*)[MAX_LEN], const unsigned int);
-void display_by_length_dec(const char (*)[MAX_LEN], const unsigned int);
+void display_by_length(const char (*)[MAX_LEN], const unsigned int);
 void display_by_first_word_length(const char (*)[MAX_LEN], const unsigned int);
 int get_option();
 
@@ -38,15 +38,18 @@ int main(void)
                 display_by_ascii((const char (*)[MAX_LEN])str, num);
                 break;
             case 3:
-                display_by_length_dec((const char (*)[MAX_LEN])str, num);
+                display_by_length((const char (*)[MAX_LEN])str, num);
                 break;
             case 4:
                 display_by_first_word_length((const char (*)[MAX_LEN])str, num);
                 break;
+            case 5:
+                get_string(str, &num);
+                break;
             default:
                 break;
         }
-    } while (option != 5);
+    } while (option != 6);
 
     return 0;
 }
@@ -90,7 +93,7 @@ void display_by_ascii(const char (*str)[MAX_LEN], const unsigned int num)
         flag = false;
         for (j = 1; j < num - i; j++)
         {
-            if (strncmp(str[j], str[j-1], MAX_LEN) < 0)
+            if (strcmp(str[order[j-1]], str[order[j]]) > 0)
             {
                 temp = order[j];
                 order[j] = order[j-1];
@@ -110,7 +113,7 @@ void display_by_ascii(const char (*str)[MAX_LEN], const unsigned int num)
     }
 }
 
-void display_by_length_dec(const char (*str)[MAX_LEN], const unsigned int num)
+void display_by_length(const char (*str)[MAX_LEN], const unsigned int num)
 {
     unsigned int order[MAX_NUM];
     unsigned int i = 0, j = 0, temp = 0;
@@ -126,7 +129,7 @@ void display_by_length_dec(const char (*str)[MAX_LEN], const unsigned int num)
         flag = false;
         for (j = 1; j < num - i; j++)
         {
-            if (strlen(str[j]) > strlen(str[j-1]))
+            if (strlen(str[order[j-1]]) > strlen(str[order[j]]))
             {
                 temp = order[j];
                 order[j] = order[j-1];
@@ -144,12 +147,47 @@ void display_by_length_dec(const char (*str)[MAX_LEN], const unsigned int num)
     {
         puts(str[order[i]]);
     }
-
 }
 void display_by_first_word_length(const char (*str)[MAX_LEN], const unsigned int num)
 {
+    unsigned int order[MAX_NUM];
+    unsigned int i = 0, j = 0, temp = 0;
+    bool flag = false;
 
+    for (i = 0; i < num; i++)
+    {
+        order[i] = i;
+    }
+
+    for (i = 0; i < num - 1; i++)
+    {
+        flag = false;
+        for (j = 1; j < num - i; j++)
+        {
+            char str1[MAX_LEN];
+            char str2[MAX_LEN];
+            sscanf(str[order[j-1]], "%s", str1);
+            sscanf(str[order[j]], "%s", str2);
+            if (strlen(str1) > strlen(str2))
+            {
+                temp = order[j];
+                order[j] = order[j-1];
+                order[j-1] = temp;
+                flag = true;
+            }
+        }
+        if (!flag)
+        {
+            break;
+        }
+    }
+
+    for (i = 0; i < num; i++)
+    {
+        puts(str[order[i]]);
+    }
 }
+
 int get_option()
 {
     int option = 0;
@@ -161,9 +199,10 @@ int get_option()
         puts("2.Displayed by ASCII");
         puts("3.Displayed by string length descending");
         puts("4.Displayed by the first word length");
-        puts("5.Quit");
+        puts("5.Re-enter a set of strings");
+        puts("6.Quit");
         __fpurge(stdin);
-    } while (1 != scanf("%d", &option) || option < 1 || option > 5);
+    } while (1 != scanf("%d", &option) || option < 1 || option > 6);
 
     return option;
 }
