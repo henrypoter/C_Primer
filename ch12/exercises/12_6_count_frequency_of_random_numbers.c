@@ -9,7 +9,6 @@
 #include <stdlib.h>
 #include <memory.h>
 #include <time.h>
-#include <stdbool.h>
 
 void count_frequency(const int num, const int span);
 
