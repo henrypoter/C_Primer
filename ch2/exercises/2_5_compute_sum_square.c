@@ -10,8 +10,8 @@
 int main(void)
 {
     int toes = 10;
-    int sum = toes + toes;
-    int square = toes * toes;
+    int sum = toes + toes;  //addition of toes variable
+    int square = toes * toes;   //multiplication of toes variable.
 
     printf("toes = %d\n", toes);
     printf("sum = %d\n", sum);
